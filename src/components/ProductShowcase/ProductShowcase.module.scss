@@ -96,8 +96,11 @@
 
 .seeAllRight {
   display: block;
-  margin: 0 0 $space-4 auto;
   width: fit-content;
+  margin: 0 auto $space-4;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: none;
 }
 
 .carousel {
