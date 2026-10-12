@@ -7,6 +7,8 @@ Teste para a vaga de Desenvolvedor Front-End. Vitrine de produtos com modal de d
 - React 18 + TypeScript
 - Vite
 - Sass (CSS Modules com `.module.scss`)
+- Vitest
+- Testing Library
 
 ## Pré-requisitos
 
@@ -34,8 +36,9 @@ npm run preview   # serve o build de produção localmente
 
 ## Como testar
 
-1. Rode `npm run build`. Ele falha se houver erro de tipos ou de compilação.
-2. Rode `npm run dev` e confira no navegador:
+1. Rode `npm test` para executar os testes automatizados (formatação de preço e modal de produto).
+2. Rode `npm run build`. Ele falha se houver erro de tipos ou de compilação.
+3. Rode `npm run dev` e confira no navegador:
    - os produtos aparecem nas três vitrines, com preço, parcelamento e botão Comprar;
    - clicar em um produto abre o modal com as informações dele;
    - o modal fecha com a tecla ESC, com o botão × e clicando fora dele;
@@ -56,6 +59,8 @@ Se essa URL falhar (por exemplo, por CORS ou indisponibilidade), a aplicação u
 | `npm run dev` | Servidor de desenvolvimento |
 | `npm run build` | Checagem de tipos e build de produção em `dist/` |
 | `npm run preview` | Serve o build de produção localmente |
+| `npm test` | Roda os testes uma vez |
+| `npm run test:watch` | Roda os testes em modo watch |
 
 ## Estrutura
 
