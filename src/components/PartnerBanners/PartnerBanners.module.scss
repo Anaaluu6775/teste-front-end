@@ -20,34 +20,57 @@
   align-items: flex-start;
   justify-content: center;
   gap: $space-2;
-  min-height: 200px;
+  min-height: 350px;
   padding: $space-5 $space-6;
   color: $color-white;
-  background: linear-gradient(120deg, #2a1d12, #5a3b1c);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    url('/images/parceiros.png') center / cover no-repeat,
+    linear-gradient(120deg, #2a1d12, #5a3b1c);
   border-radius: $radius;
+
+  @include respond-below($bp-md) {
+    min-height: 260px;
+  }
 }
 
 .title {
   margin: 0;
-  font-size: 22px;
+  font-size: 36px;
   font-weight: 700;
+  line-height: 1.1;
+
+  @include respond-below($bp-md) {
+    font-size: 28px;
+  }
 }
 
 .text {
   margin: 0;
   max-width: 260px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .cta {
-  margin-top: $space-2;
-  padding: $space-2 $space-5;
-  font-size: 13px;
+  margin-top: $space-3;
+  padding: $space-3 $space-6;
+  font-size: 14px;
   font-weight: 700;
   color: $color-dark;
+  text-transform: uppercase;
   text-decoration: none;
   background: $color-yellow;
   border-radius: 4px;
+  transition: filter $transition;
+
+  &:hover {
+    filter: brightness(0.92);
+  }
 
   @include focus-ring;
 }
