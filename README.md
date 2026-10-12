@@ -1,31 +1,85 @@
-# Teste Econverse: Vaga Desenvolvedor Front-End
+# Econverse | Vitrine de Produtos
 
-### Vem ser #Econverse!
+Teste para a vaga de Desenvolvedor Front-End. Vitrine de produtos com modal de detalhes, feita com React + TypeScript + Sass, sem bibliotecas de UI.
 
-Segue abaixo as instruções para a execução do teste.
+## Tecnologias
 
-## Instruções
-- Faça um fork desse projeto para a sua conta pessoal do GitHub.
-- Desenvolva a página conforme as **Especificações Técnicas** 
-- Crie um README com as instruções para compilar, testar e rodar o projeto.
-- O link do repositório deverá ser enviado para o e-mail gustavo.cipriano@econverse.com.br com o título **Teste Vaga FrontEnd**
+- React 18 + TypeScript
+- Vite
+- Sass (CSS Modules com `.module.scss`)
 
-## Especificações Técnicas
-- Desenvolver a pagina em React e TypeScript conforme o [layout](https://www.figma.com/file/rWnzPeoxgynuNPsJjV0VmV/Teste-Front-End-Jr?node-id=0%3A1). Para conseguir pegar os elementos do Figma, basta copiar o layout para sua conta que terá acesso de edição.
-- Montar a [vitrine](https://app.econverse.com.br/teste-front-end/junior/tecnologia/layout/vitrine-produtos.png) de produtos consumindo as informações dos produtos em json atraves desse [Link](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json).
-- Desenvolver a interação ao clicar em um produto conforme layout. A interação consiste em abrir um modal com as principais informações do produto presente no arquivo [JSON](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json) conforme o produto que clicar.
-- Utilizar Pré-processador Sass, Less ou Stylus.
-- Respeitar o Layout pixel a pixel, tamanho das fontes, cores e botões.
-- Não Utilizar bibliotecas UI como Bootstrap, Foundation, ou afins.
+## Pré-requisitos
 
-## Pontos Extras
-- Utilizar Boas práticas de SEO
-- Uso de HTML semântico
+- Node.js 18 ou superior
+- npm
 
-## O que avaliaremos em seu teste
-- Organização do projeto
-- Lógica do código
-- Componentização
-- Alcance dos objetivos propostos
+## Como rodar
 
-**Boa sorte! ;)**
+```bash
+# 1. instalar dependências
+npm install
+
+# 2. subir o servidor de desenvolvimento
+npm run dev
+```
+
+Acesse o endereço mostrado no terminal (geralmente `http://localhost:5173`).
+
+## Como compilar
+
+```bash
+npm run build     # checa os tipos (TypeScript) e gera o build em dist/
+npm run preview   # serve o build de produção localmente
+```
+
+## Como testar
+
+1. Rode `npm run build`. Ele falha se houver erro de tipos ou de compilação.
+2. Rode `npm run dev` e confira no navegador:
+   - os produtos aparecem nas três vitrines, com preço, parcelamento e botão Comprar;
+   - clicar em um produto abre o modal com as informações dele;
+   - o modal fecha com a tecla ESC, com o botão × e clicando fora dele;
+   - ao diminuir a janela, o layout se adapta (4, 3, 2 colunas e scroll horizontal no mobile).
+
+## Fonte dos produtos
+
+A vitrine consome o JSON oficial do teste:
+
+https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json
+
+Se essa URL falhar (por exemplo, por CORS ou indisponibilidade), a aplicação usa a cópia local `public/products.json`, com o mesmo conteúdo. Para apontar para outra URL, crie um arquivo `.env` na raiz com `VITE_PRODUCTS_URL=<url>`.
+
+## Scripts
+
+| Comando | O que faz |
+| --- | --- |
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm run build` | Checagem de tipos e build de produção em `dist/` |
+| `npm run preview` | Serve o build de produção localmente |
+
+## Estrutura
+
+```
+src/
+  components/
+    Header, Hero, CategoryList, PartnerBanners, Brands, Newsletter, Footer
+    ProductCard/       Card do produto (preço, parcelamento, frete, comprar)
+    ProductShowcase/   Vitrine (carrossel), abas, estados de loading, erro e vazio
+    ProductModal/      Modal acessível (preço, descrição, quantidade, comprar)
+  hooks/useProducts.ts Busca e estado dos produtos
+  types/product.ts     Tipos do JSON
+  utils/formatPrice.ts Formatação em BRL
+  styles/              Variáveis, mixins e estilos globais (Sass)
+```
+
+## Layout
+
+A página segue o layout do Figma do teste: header (benefícios, busca e categorias), banner, departamentos, três vitrines de produtos, banners de parceiros, marcas, newsletter e rodapé. A vitrine e o modal consomem o JSON de produtos. As abas da vitrine são visuais, pois o JSON não traz categoria.
+
+## Decisões
+
+- **Modal acessível**: `role="dialog"`, `aria-modal`, foco preso, fecha com ESC, clique no overlay ou botão, devolve o foco ao card.
+- **HTML semântico**: `header`, `main`, `section`, `article`, `ul/li`, hierarquia `h1 > h2/h3`, `alt` nas imagens.
+- **SEO**: `lang="pt-BR"`, `title`, `meta description` e Open Graph no `index.html`.
+- **Responsivo**: 4, 3, 2 colunas e scroll horizontal no mobile.
+- **Design tokens**: cores, fontes e espaçamentos em `src/styles/_variables.scss`.

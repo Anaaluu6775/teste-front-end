@@ -1,0 +1,139 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+$footer-bg: #f4f4f4;
+$divider: #d4d4d4;
+$social-color: #444444;
+
+.footer {
+  background: $color-white;
+}
+
+.top {
+  background: $footer-bg;
+}
+
+.inner {
+  @include container;
+  display: grid;
+  grid-template-columns: 397px 1fr;
+  min-height: 255px;
+  padding-top: $space-6;
+  padding-bottom: $space-6;
+
+  @include respond-below($bp-md) {
+    grid-template-columns: 1fr;
+    gap: $space-5;
+    min-height: 0;
+  }
+}
+
+.about {
+  padding-top: 18px;
+  padding-right: $space-5;
+}
+
+.logo {
+  display: block;
+  width: 147px;
+  height: auto;
+}
+
+.text {
+  max-width: 250px;
+  margin: $space-4 0 $space-5;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: $color-text;
+}
+
+.socials {
+  display: flex;
+  gap: $space-5;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social {
+  display: flex;
+  color: $social-color;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-accent;
+  }
+
+  @include focus-ring;
+}
+
+.columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 198px;
+  padding: $space-5 0 0 79px;
+  border-left: 1px solid $divider;
+
+  @include respond-below($bp-md) {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    gap: $space-5;
+    padding: $space-5 0 0;
+    border-top: 1px solid $divider;
+    border-left: 0;
+  }
+}
+
+.heading {
+  margin: 0 0 $space-4;
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-dark;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555555;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    @include focus-ring;
+  }
+}
+
+.bottom {
+  @include container;
+  display: grid;
+  grid-template-columns: 397px 1fr;
+
+  @include respond-below($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.copy {
+  grid-column: 2;
+  margin: 0;
+  padding: $space-3 0 $space-3 $space-4;
+  font-size: 13px;
+  color: $color-text;
+
+  @include respond-below($bp-md) {
+    grid-column: 1;
+    padding-left: 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,77 @@
+﻿@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  @include container;
+  padding-top: $space-5;
+  padding-bottom: $space-5;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-5;
+  margin: 0;
+  padding: $space-2 $space-2 $space-3;
+  overflow-x: auto;
+  list-style: none;
+}
+
+// Cada item tem 140 x 171: quadrado de 140 x 140 + área do nome.
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  height: 171px;
+  text-decoration: none;
+
+  @include focus-ring;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  background: $color-card;
+  border-radius: $radius;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition:
+    background $transition,
+    box-shadow $transition;
+
+  img {
+    display: block;
+    width: 61px;
+    height: 61px;
+  }
+
+  .item:hover & {
+    background: $color-white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.name {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  color: $color-text;
+}
+
+.current {
+  .card {
+    background: $color-white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  .name {
+    font-weight: 600;
+    color: $color-purple;
+  }
+}

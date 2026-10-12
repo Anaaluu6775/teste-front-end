@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+  padding-top: $space-4;
+  padding-bottom: $space-4;
+
+  @include respond-below($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: $space-2;
+  min-height: 200px;
+  padding: $space-5 $space-6;
+  color: $color-white;
+  background: linear-gradient(120deg, #2a1d12, #5a3b1c);
+  border-radius: $radius;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.text {
+  margin: 0;
+  max-width: 260px;
+  font-size: 14px;
+}
+
+.cta {
+  margin-top: $space-2;
+  padding: $space-2 $space-5;
+  font-size: 13px;
+  font-weight: 700;
+  color: $color-dark;
+  text-decoration: none;
+  background: $color-yellow;
+  border-radius: 4px;
+
+  @include focus-ring;
+}

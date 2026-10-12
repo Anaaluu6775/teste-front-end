@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  @include container;
+  padding-top: $space-6;
+  padding-bottom: $space-6;
+}
+
+.title {
+  margin: 0 0 $space-5;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: $color-accent;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-4;
+  margin: 0;
+  padding: 0 0 $space-2;
+  overflow-x: auto;
+  list-style: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  font-size: 11px;
+  font-weight: 700;
+  color: $color-accent;
+  text-decoration: none;
+  border: 1px solid $color-border;
+  border-radius: 50%;
+  transition: border-color $transition;
+
+  &:hover {
+    border-color: $color-accent;
+  }
+
+  @include focus-ring;
+}
